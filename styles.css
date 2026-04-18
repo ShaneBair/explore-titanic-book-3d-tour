@@ -1,0 +1,46 @@
+body, html {
+    margin: 0;
+    height: 100%;
+}
+#controls {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    z-index: 10;
+    background: rgba(255,255,255,0.9);
+    padding: 8px 12px;
+    border-radius: 4px;
+    font-family: sans-serif;
+}
+#panorama {
+    width: 100vw;
+    height: 100vh;
+}
+#mapOverlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 20;
+    display: none; /* Hidden by default */
+    background: rgba(0,0,0,0.8);
+    padding: 10px;
+    border-radius: 8px;
+}
+#mapImage {
+    width: 800px; /* Adjust size as needed */
+    height: auto;
+    position: relative;
+}
+.mapPoint {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: url('./images/360icon_reduced.png') no-repeat center;
+    background-size: cover;
+    cursor: pointer;
+    border-radius: 50%;
+}
+.mapPoint:hover {
+    opacity: 0.7;
+}
