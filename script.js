@@ -283,6 +283,9 @@ function positionMapPoints() {
 }
 
 var mapImage = document.getElementById('mapImage');
+var mapOverlay = document.getElementById('mapOverlay');
+var toggleMapButton = document.getElementById('toggleMap');
+
 if (mapImage.complete) {
     positionMapPoints();
 } else {
@@ -290,12 +293,46 @@ if (mapImage.complete) {
 }
 window.addEventListener('resize', positionMapPoints);
 
-function loadScene(scene) {
-    viewer.loadScene(scene);
-    document.getElementById('mapOverlay').style.display = 'none'; // Hide map after selection
+function isMapOpen() {
+    return mapOverlay.style.display === 'block';
 }
 
-document.getElementById('toggleMap').addEventListener('click', function() {
-    var map = document.getElementById('mapOverlay');
-    map.style.display = map.style.display === 'none' ? 'block' : 'none';
+function openMap() {
+    mapOverlay.style.display = 'block';
+}
+
+function closeMap() {
+    mapOverlay.style.display = 'none';
+}
+
+function loadScene(scene) {
+    viewer.loadScene(scene);
+    closeMap();
+}
+
+toggleMapButton.addEventListener('click', function() {
+    if (isMapOpen()) {
+        closeMap();
+        return;
+    }
+
+    openMap();
+});
+
+document.addEventListener('pointerdown', function(event) {
+    if (!isMapOpen()) {
+        return;
+    }
+
+    if (mapOverlay.contains(event.target) || toggleMapButton.contains(event.target)) {
+        return;
+    }
+
+    closeMap();
+});
+
+document.addEventListener('keydown', function(event) {
+    if (event.key === 'Escape' && isMapOpen()) {
+        closeMap();
+    }
 });
