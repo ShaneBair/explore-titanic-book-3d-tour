@@ -336,3 +336,26 @@ document.addEventListener('keydown', function(event) {
         closeMap();
     }
 });
+
+document.getElementById('infoButton').addEventListener('click', function() {
+    document.getElementById('infoModal').style.display = 'block';
+});
+
+document.getElementById('infoModalClose').addEventListener('click', function() {
+    document.getElementById('infoModal').style.display = 'none';
+});
+
+window.addEventListener('click', function(event) {
+    if (event.target == document.getElementById('infoModal')) {
+        document.getElementById('infoModal').style.display = 'none';
+    }
+});
+
+document.getElementById('hiddenScenesSelect').addEventListener('change', function() {
+    var scene = this.value;
+    if (scene) {
+        loadScene(scene);
+        document.getElementById('mapOverlay').style.display = 'none';
+        this.value = ''; // reset
+    }
+});

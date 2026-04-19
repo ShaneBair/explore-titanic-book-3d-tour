@@ -11,13 +11,26 @@
 <body>
 
 <div id="controls">
-    <button id="toggleMap">Toggle Map</button>
+    <button id="toggleMap"></button>
 </div>
 
 <div id="panorama"></div>
 
 <div id="mapOverlay">
     <img id="mapImage" src="./images/Map_v2.png" alt="Titanic Map">
+    <select id="hiddenScenesSelect">
+        <option value="">Select a hidden scene</option>
+        <option value="afthelm">afthelm</option>
+        <option value="base">base</option>
+        <option value="forwardhelm">forwardhelm</option>
+        <option value="lower_left_cube">lower_left_cube</option>
+        <option value="lower_right_cube">lower_right_cube</option>
+        <option value="stairs_midlevel">stairs_midlevel</option>
+        <option value="Swimming_pool_view2">Swimming_pool_view2</option>
+        <option value="topstair_center_cube">topstair_center_cube</option>
+        <option value="topstair_left_cube">topstair_left_cube</option>
+        <option value="topstairright_cube">topstairright_cube</option>
+    </select>
     <!-- Points from titanic24.xml mapper data, positioned by x,y -->
     <div class="mapPoint" data-x="641" data-y="116" onclick="loadScene('base2')" title="base2"></div>
     <div class="mapPoint" data-x="641" data-y="212" onclick="loadScene('boiler')" title="boiler"></div>
@@ -32,6 +45,15 @@
     <div class="mapPoint" data-x="844" data-y="88" onclick="loadScene('Topdeck_view1')" title="Topdeck_view1"></div>
     <div class="mapPoint" data-x="248" data-y="141" onclick="loadScene('deck3')" title="deck3"></div>
     <!-- Add more points as needed from XML -->
+</div>
+
+<button id="infoButton">ℹ</button>
+
+<div id="infoModal">
+    <div id="infoModalContent">
+        <span id="infoModalClose">&times;</span>
+        <p>Andrew Bair's family made the Titanic tour.</p>
+    </div>
 </div>
 
 <script src="script.js"></script>
