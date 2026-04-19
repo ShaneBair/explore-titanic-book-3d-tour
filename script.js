@@ -250,6 +250,46 @@ var viewer = pannellum.viewer('panorama', {
     }
 });
 
+function positionMapPoints() {
+    var image = document.getElementById('mapImage');
+    var overlay = document.getElementById('mapOverlay');
+    if (!image.naturalWidth || !image.naturalHeight) {
+        return;
+    }
+
+    var maxWidth = image.naturalWidth * 1.75;
+    overlay.style.setProperty('--map-max-width', maxWidth + 'px');
+
+    var scale = image.clientWidth / image.naturalWidth;
+    var pointSize = Math.round(24 * Math.max(0.75, Math.min(scale, 1.75)));
+    overlay.style.setProperty('--map-point-size', pointSize + 'px');
+
+    var points = document.querySelectorAll('.mapPoint');
+    points.forEach(function(point) {
+        var rawLeft = point.dataset.x || point.style.left;
+        var rawTop = point.dataset.y || point.style.top;
+        var px = parseFloat(rawLeft);
+        var py = parseFloat(rawTop);
+        if (!isNaN(px) && !isNaN(py)) {
+            var iconWidth = pointSize;
+            var iconHeight = pointSize;
+            var offsetX = iconWidth;
+            var offsetY = iconHeight * 1.5;
+
+            point.style.left = ((px + offsetX) / image.naturalWidth * 100) + '%';
+            point.style.top = ((py + offsetY) / image.naturalHeight * 100) + '%';
+        }
+    });
+}
+
+var mapImage = document.getElementById('mapImage');
+if (mapImage.complete) {
+    positionMapPoints();
+} else {
+    mapImage.addEventListener('load', positionMapPoints);
+}
+window.addEventListener('resize', positionMapPoints);
+
 function loadScene(scene) {
     viewer.loadScene(scene);
     document.getElementById('mapOverlay').style.display = 'none'; // Hide map after selection

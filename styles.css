@@ -26,16 +26,22 @@ body, html {
     background: rgba(0,0,0,0.8);
     padding: 10px;
     border-radius: 8px;
+    width: min(90vw, var(--map-max-width, 1400px));
+    max-width: var(--map-max-width, 1400px);
+    max-height: 90vh;
+    box-sizing: border-box;
+    overflow: auto;
 }
 #mapImage {
-    width: 800px; /* Adjust size as needed */
+    width: 100%;
     height: auto;
-    position: relative;
+    display: block;
 }
 .mapPoint {
     position: absolute;
-    width: 20px;
-    height: 20px;
+    width: var(--map-point-size, 24px);
+    height: var(--map-point-size, 24px);
+    transform: translate(-50%, -50%);
     background: url('./images/360icon_reduced.png') no-repeat center;
     background-size: cover;
     cursor: pointer;
