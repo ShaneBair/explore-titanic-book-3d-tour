@@ -7,19 +7,16 @@ body, html {
     top: 10px;
     right: 10px;
     z-index: 10;
-    background: rgba(255,255,255,0.9);
     padding: 8px 12px;
-    border-radius: 4px;
     font-family: sans-serif;
 }
 #toggleMap {
     background: url('./images/compass.png') no-repeat center;
     background-size: cover;
     border: none;
-    width: 40px;
-    height: 40px;
+    width: 50px;
+    height: 60px;
     cursor: pointer;
-    border-radius: 50%;
 }
 #panorama {
     width: 100vw;
@@ -31,7 +28,7 @@ body, html {
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 20;
-    display: none; /* Hidden by default */
+    display: block;
     background: rgba(0,0,0,0.8);
     padding: 10px;
     border-radius: 8px;
@@ -47,7 +44,10 @@ body, html {
     display: block;
 }
 #hiddenScenesSelect {
-    margin: 10px 0;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    z-index: 25;
     padding: 8px;
     font-family: sans-serif;
     border: 1px solid #ccc;
@@ -56,8 +56,8 @@ body, html {
 }
 .mapPoint {
     position: absolute;
-    width: var(--map-point-size, 24px);
-    height: var(--map-point-size, 24px);
+    width: var(--map-point-size, 48px);
+    height: var(--map-point-size, 48px);
     transform: translate(-50%, -50%);
     background: url('./images/360icon_reduced.png') no-repeat center;
     background-size: cover;
@@ -75,9 +75,9 @@ body, html {
     background: rgba(255,255,255,0.9);
     border: 2px solid #000;
     border-radius: 50%;
-    width: 40px;
-    height: 40px;
-    font-size: 20px;
+    width: 30px;
+    height: 30px;
+    font-size: 15px;
     cursor: pointer;
     font-family: sans-serif;
 }

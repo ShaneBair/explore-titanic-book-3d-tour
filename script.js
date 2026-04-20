@@ -261,7 +261,7 @@ function positionMapPoints() {
     overlay.style.setProperty('--map-max-width', maxWidth + 'px');
 
     var scale = image.clientWidth / image.naturalWidth;
-    var pointSize = Math.round(24 * Math.max(0.75, Math.min(scale, 1.75)));
+    var pointSize = Math.round(48 * Math.max(0.75, Math.min(scale, 1.75)));
     overlay.style.setProperty('--map-point-size', pointSize + 'px');
 
     var points = document.querySelectorAll('.mapPoint');
@@ -273,8 +273,8 @@ function positionMapPoints() {
         if (!isNaN(px) && !isNaN(py)) {
             var iconWidth = pointSize;
             var iconHeight = pointSize;
-            var offsetX = iconWidth;
-            var offsetY = iconHeight * 1.5;
+            var offsetX = iconWidth / 2.5;
+            var offsetY = iconHeight / 2.5;
 
             point.style.left = ((px + offsetX) / image.naturalWidth * 100) + '%';
             point.style.top = ((py + offsetY) / image.naturalHeight * 100) + '%';
